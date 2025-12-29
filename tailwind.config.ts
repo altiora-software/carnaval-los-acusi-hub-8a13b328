@@ -18,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Outfit", "system-ui", "sans-serif"],
-        display: ["Playfair Display", "Georgia", "serif"],
+        sans: ["Montserrat", "system-ui", "sans-serif"],
+        display: ["Montserrat", "sans-serif"], // Usamos la misma para consistencia
       },
       colors: {
         border: "hsl(var(--border))",
@@ -129,4 +129,12 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  // Dentro de extend: { colors: { ... } }
+leaf: {
+  light: "hsl(var(--leaf-light))",
+  mid: "hsl(var(--leaf-mid))",
+  dark: "hsl(var(--leaf-dark))",
+},
+// Puedes mantener o borrar los 'carnival' anteriores, 
+// pero te recomiendo usar 'primary' para lo que antes era naranja.
 } satisfies Config;

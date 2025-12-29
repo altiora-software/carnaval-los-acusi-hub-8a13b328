@@ -12,38 +12,56 @@ const navLinks = [
   { to: "/galeria", label: "Galería" },
 ];
 
+// Navbar.tsx
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-leaf-light/20">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-display text-xl font-bold text-primary">
-              Los Acusi
+        <div className="flex items-center justify-between h-20"> {/* Aumenté un poco el alto para que respire */}
+          
+          {/* Logo - Lado Izquierdo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <img
+                src="/g7.svg" // Asegúrate de usar tu nuevo logo circular aquí
+                alt="Logo Los Acusi"
+                className="h-12 w-12 object-contain transition-transform group-hover:scale-110"
+              />
+            </div>
+            <span className="font-sans text-xl font-extrabold tracking-tighter text-secondary">
+              LOS ACUSI
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Nav - CENTRADO */}
+          <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-sm font-semibold uppercase tracking-widest transition-all hover:text-primary relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full ${
                   location.pathname === link.to
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                    ? "text-primary after:w-full"
+                    : "text-secondary/70"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Button variant="whatsapp" size="sm" asChild>
-              <a href={WHATSAPP_BASE_URL} target="_blank" rel="noopener noreferrer">
+          </div>
+
+          {/* Botón Derecha */}
+          <div className="hidden md:block">
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="bg-leaf-dark hover:bg-leaf-mid text-white rounded-full px-8 shadow-md hover:shadow-leaf-mid/20 transition-all text-secondary"
+              asChild
+            >
+              <a href={WHATSAPP_NUMBER} target="_blank" rel="noopener noreferrer">
                 Contactar
               </a>
             </Button>
@@ -51,35 +69,32 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-secondary"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
         {/* Mobile Nav */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-6 border-t border-leaf-light/10 animate-fade-in bg-background">
+            <div className="flex flex-col gap-6 items-center">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
                   onClick={() => setIsOpen(false)}
-                  className={`text-base font-medium transition-colors hover:text-primary ${
-                    location.pathname === link.to
-                      ? "text-primary"
-                      : "text-muted-foreground"
+                  className={`text-lg font-bold ${
+                    location.pathname === link.to ? "text-primary" : "text-secondary/80"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button variant="whatsapp" asChild className="mt-2">
-                <a href={WHATSAPP_BASE_URL} target="_blank" rel="noopener noreferrer">
-                  Contactar por WhatsApp
+              <Button className="w-full bg-primary rounded-full text-secondary " asChild>
+                <a href={WHATSAPP_NUMBER} target="_blank" rel="noopener noreferrer">
+                  WhatsApp
                 </a>
               </Button>
             </div>

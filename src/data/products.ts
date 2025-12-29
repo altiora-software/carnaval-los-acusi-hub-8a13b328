@@ -1,44 +1,54 @@
+// 1. Importamos las imágenes (Vite les asignará una URL real al compilar)
 import productRemeraImg from "@/assets/product-remera.jpg";
 import productVasoImg from "@/assets/product-vaso.jpg";
 import productChuloImg from "@/assets/product-chulo.jpg";
 import productPilusoImg from "@/assets/product-piluso.jpg";
 
 export interface Product {
-  id: string;
+  id: number; // Cambiado a number para que coincida con tus IDs
   name: string;
-  price: string;
+  price: number;
   image: string;
+  description?: string;
+  sizes?: string;
 }
 
 export const products: Product[] = [
   {
-    id: "remera",
-    name: "Remera oficial Los Acusi",
-    price: "$18.000",
-    image: productRemeraImg,
+    id: 1,
+    name: "Remera Oficial Los Acusi",
+    price: 15000,
+    image: productRemeraImg, // USAMOS LA VARIABLE, SIN COMILLAS
+    description: "¡Una pinturita! Tela fresca para bailar bajo el sol de la Quebrada. El verde de la comparsa en tu piel.",
+    sizes: "Talles del S al XXL"
   },
   {
-    id: "vaso",
-    name: "Vaso carnavalero",
-    price: "$6.000",
-    image: productVasoImg,
+    id: 2,
+    name: "Gorra Carnavalera",
+    price: 8000,
+    image: productPilusoImg, // USAMOS LA VARIABLE
+    description: "Para que el sol no te achique. Con bordado de alta calidad para aguantar toda la gira.",
+    sizes: "Ajustable - Único talle"
   },
   {
-    id: "chulo",
-    name: "Chulo",
-    price: "$8.000",
-    image: productChuloImg,
+    id: 3,
+    name: "Vaso Térmico Acusi",
+    price: 12000,
+    image: productVasoImg, // USAMOS LA VARIABLE
+    description: "Mantené tu bebida bien fresca mientras bajás por las calles de Humahuaca. Irrompible.",
+    sizes: "Capacidad: 500ml"
   },
   {
-    id: "piluso",
-    name: "Piluso",
-    price: "$10.000",
-    image: productPilusoImg,
-  },
+    id: 4,
+    name: "Chulo de la Comparsa",
+    price: 5000,
+    image: productChuloImg, // USAMOS LA VARIABLE
+    description: "El toque final para tu disfraz. Tela suave, colores vivos que no destiñen con la harina.",
+    sizes: "Talle único"
+  }
 ];
 
 export const WHATSAPP_NUMBER = "5493884123456";
-export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const getWhatsAppUrl = (message: string) => 
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
