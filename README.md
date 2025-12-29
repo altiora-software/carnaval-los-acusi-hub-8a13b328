@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+🎨 Comparsa Los Acusi - Landing Page
+Esta es una aplicación web moderna, rápida y optimizada para la Comparsa Los Acusi de Humahuaca, Jujuy. El objetivo es mostrar la tradición, la galería de fotos del carnaval y facilitar la venta de indumentaria oficial a través de WhatsApp.
 
-## Project info
+🚀 Tecnologías utilizadas
+React + Vite: Para una experiencia de usuario ultra rápida.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Tailwind CSS: Estilizado moderno y responsivo con animaciones personalizadas.
 
-## How can I edit this code?
+Lucide React: Iconografía elegante y minimalista.
 
-There are several ways of editing your application.
+Shadcn/UI: Componentes de interfaz de alta calidad.
 
-**Use Lovable**
+Framer Motion / Tailwind Animate: Para transiciones suaves y efectos de carnaval.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+🛠️ Estructura del Proyecto
+Para modificar el contenido, solo necesitas tocar archivos específicos:
 
-Changes made via Lovable will be committed automatically to this repo.
+/src/data/products.ts: Contiene todos los productos de la tienda (nombres, precios, fotos).
 
-**Use your preferred IDE**
+/src/data/gallery.ts: Aquí se gestionan las fotos de la galería.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+/src/components/: Aquí residen las piezas visuales como la Navbar, el Hero y el Footer.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+/src/assets/: Carpeta para guardar las fotos y el logo oficial.
 
-Follow these steps:
+🎭 Cómo adaptarlo para OTRA comparsa
+Si querés usar esta base para otra agrupación, seguí estos 3 pasos:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Cambiar la Identidad Visual (Colores)
+Andá al archivo tailwind.config.ts y modificá las variables dentro de leaf. Si tu comparsa es roja y amarilla, cambiá los valores HSL:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+TypeScript
 
-# Step 3: Install the necessary dependencies.
-npm i
+// tailwind.config.ts
+leaf: {
+  light: "hsl(var(--tu-color-claro))",
+  mid: "hsl(var(--tu-color-principal))",
+  dark: "hsl(var(--tu-color-oscuro))",
+},
+2. Actualizar el Número de WhatsApp
+Es vital para recibir los pedidos. Buscá en src/data/products.ts:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+TypeScript
+
+export const WHATSAPP_NUMBER = "5493884XXXXXX"; // Tu número con código de país
+3. Reemplazar Imágenes y Logo
+Subí tu logo en formato .svg o .png a la carpeta public/ o src/assets/.
+
+En Navbar.tsx y Footer.tsx, actualizá la ruta de la imagen: <img src="/tu-nuevo-logo.svg" alt="Logo" />
+
+📈 Funcionalidades Clave
+Navbar Inteligente: Se esconde al bajar para dar más espacio y aparece al subir.
+
+Hero Animado: Título con gradiente de colores que fluye automáticamente.
+
+Tienda Integrada: Botones de consulta que abren WhatsApp con un mensaje automático personalizado con el nombre del producto.
+
+Galería Masonry: Estilo tipo Pinterest que organiza las fotos de forma artística.
+
+💻 Instalación y Desarrollo
+Clonar el repositorio:
+
+Bash
+
+git clone https://github.com/tu-usuario/nombre-del-repo.git
+Instalar dependencias:
+
+Bash
+
+npm install
+Correr en modo desarrollo:
+
+Bash
+
 npm run dev
-```
+Compilar para producción:
 
-**Edit a file directly in GitHub**
+Bash
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-    
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+npm run build
+📜 Licencia
+Desarrollado con ❤️ para la cultura de la Quebrada. ¡Que viva el Carnaval!
